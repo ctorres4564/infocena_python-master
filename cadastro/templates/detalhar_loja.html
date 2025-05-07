@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes da Loja</title>
+  </head>
+  <body>
+    <h1>Detalhes da Loja</h1>
+
+    <div>
+      <p><strong>Nome:</strong> {{ loja.nome }}</p>
+      <p><strong>Telefone:</strong> {{ loja.telefone }}</p>
+      {% if loja.numero %}
+      <p><strong>Número:</strong> {{ loja.numero }}</p>
+      {% endif %}
+    </div>
+
+    <div>
+      <a href="{% url 'cadastro:alterar_loja' loja.id %}">Editar</a>
+      <a href="{% url 'cadastro:excluir_loja' loja.id %}">Excluir</a>
+      <a href="{% url 'cadastro:listar_lojas' %}">Voltar</a>
+    </div>
+  </body>
+</html>

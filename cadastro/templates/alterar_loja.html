@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alterar Loja</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .btn-container {
+        margin-top: 20px;
+        text-align: right;
+      }
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-left: 10px;
+      }
+      .btn-salvar {
+        background-color: #4caf50;
+        color: white;
+      }
+      .btn-cancelar {
+        background-color: #9e9e9e;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-home {
+        background-color: #2196f3;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn:hover {
+        opacity: 0.8;
+      }
+      .error-message {
+        color: #f44336;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+      .header-buttons {
+        margin-bottom: 20px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-buttons">
+      <a href="{% url 'index' %}" class="btn btn-home">Voltar para Home</a>
+    </div>
+
+    <div class="form-container">
+      <h1>Alterar Loja</h1>
+
+      <form method="post">
+        {% csrf_token %} {% for field in formulario %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }} {% if field.errors %}
+          <div class="error-message">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="btn-container">
+          <a href="{% url 'cadastro:listar_lojas' %}" class="btn btn-cancelar"
+            >Cancelar</a
+          >
+          <button type="submit" class="btn btn-salvar">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

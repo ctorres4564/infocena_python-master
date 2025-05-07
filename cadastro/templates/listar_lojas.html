@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lojas</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .btn-nova-loja {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      .btn-nova-loja:hover {
+        background-color: #45a049;
+      }
+      .btn-home {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #2196f3;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+      }
+      .btn-home:hover {
+        background-color: #1976d2;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+      .acoes a {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 0 4px;
+        text-decoration: none;
+        border-radius: 4px;
+        color: white;
+      }
+      .btn-detalhes {
+        background-color: #2196f3;
+      }
+      .btn-editar {
+        background-color: #ffc107;
+      }
+      .btn-excluir {
+        background-color: #f44336;
+      }
+      .acoes a:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lojas</h1>
+
+    <div class="btn-container">
+      <a href="{% url 'cadastro:incluir_loja' %}" class="btn-nova-loja"
+        >Incluir Nova Loja</a
+      >
+      <a href="{% url 'index' %}" class="btn-home">Voltar para Home</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for l in lojas %}
+        <tr>
+          <td>{{ l.nome }}</td>
+          <td>{{ l.telefone }}</td>
+          <td class="acoes">
+            <a
+              href="{% url 'cadastro:detalhar_loja' l.id %}"
+              class="btn-detalhes"
+              >Detalhes</a
+            >
+            <a href="{% url 'cadastro:alterar_loja' l.id %}" class="btn-editar"
+              >Editar</a
+            >
+            <a href="{% url 'cadastro:excluir_loja' l.id %}" class="btn-excluir"
+              >Excluir</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
