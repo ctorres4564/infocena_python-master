@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {# Ou o nome do seu template base #}
+
+{% block content %}
+  <h1>Área de Cadastro</h1>
+
+  <p>Selecione uma opção:</p>
+  <ul>
+    <li><a href="{% url 'cadastro:listar_lojas' %}">Gerenciar Lojas</a></li>
+    <li><a href="{% url 'cadastro:listar_produtos' %}">Gerenciar Produtos</a></li>
+  </ul>
+
+   <p>
+      <a href="{% url 'siteweb:index' %}" class="btn btn-secondary">Voltar à Página Inicial</a>
+  </p>
+
+{% endblock %}

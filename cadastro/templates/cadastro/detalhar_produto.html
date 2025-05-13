@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Detalhes do Produto{% endblock %} {%
+block content %}
+<div class="container">
+  <h1>Detalhes do Produto</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ produto.nome }}</h5>
+      <p class="card-text">
+        <strong>Descrição:</strong> {{ produto.descricao|default:"Não informada"
+        }}<br />
+        <strong>Preço:</strong> R$ {{ produto.preco }}<br />
+        <strong>Estoque:</strong> {{ produto.estoque }} unidades<br />
+        <strong>Loja:</strong> {{ produto.loja.nome|default:"Não definida" }}
+      </p>
+
+      <a
+        href="{% url 'cadastro:alterar_produto' produto.id %}"
+        class="btn btn-warning"
+        >Editar</a
+      >
+      <a
+        href="{% url 'cadastro:excluir_produto' produto.id %}"
+        class="btn btn-danger"
+        >Excluir</a
+      >
+      <a href="{% url 'cadastro:listar_produtos' %}" class="btn btn-secondary"
+        >Voltar</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}

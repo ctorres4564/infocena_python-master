@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {# Ou o nome do seu template base #}
+
+{% block content %}
+  <h1>Incluir Novo Produto</h1>
+
+  <form method="post">
+    {% csrf_token %} {# Essencial para segurança em forms POST #}
+
+    {{ formulario.as_p }} {# Renderiza o formulário com parágrafos, ou use .as_table ou .as_ul #}
+    {# Ou renderize campo a campo para mais controle:
+    <div class="mb-3">
+        <label for="{{ formulario.nome.id_for_label }}" class="form-label">{{ formulario.nome.label }}</label>
+        {{ formulario.nome }}
+        {% if formulario.nome.errors %}
+            <div class="text-danger">
+                {{ formulario.nome.errors }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="{{ formulario.preco.id_for_label }}" class="form-label">{{ formulario.preco.label }}</label>
+        {{ formulario.preco }}
+         {% if formulario.preco.errors %}
+            <div class="text-danger">
+                {{ formulario.preco.errors }}
+            </div>
+        {% endif %}
+    </div>
+     <div class="mb-3">
+        <label for="{{ formulario.estoque.id_for_label }}" class="form-label">{{ formulario.estoque.label }}</label>
+        {{ formulario.estoque }}
+         {% if formulario.estoque.errors %}
+            <div class="text-danger">
+                {{ formulario.estoque.errors }}
+            </div>
+        {% endif %}
+    </div>
+     <div class="mb-3">
+        <label for="{{ formulario.descricao.id_for_label }}" class="form-label">{{ formulario.descricao.label }}</label>
+        {{ formulario.descricao }}
+         {% if formulario.descricao.errors %}
+            <div class="text-danger">
+                {{ formulario.descricao.errors }}
+            </div>
+        {% endif %}
+    </div>
+    #}
+
+
+    <button type="submit" class="btn btn-success">Salvar Produto</button>
+    <a href="{% url 'cadastro:listar_produtos' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+
+{% endblock %}
