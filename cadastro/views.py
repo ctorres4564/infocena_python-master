@@ -64,47 +64,64 @@ def excluir_loja(request, id):
     return render(request, "excluir_loja.html", {"loja": loja})
 
 
-def listar_produtos(request):
-    produtos = Produto.objects.all()
-    return render(request, "cadastro/listar_produtos.html", {"produtos": produtos})
+def listar_produtos(request, id_loja):
+    loja = get_object_or_404(Loja, id=id_loja)
+    produtos = Produto.objects.filter(loja=loja).order_by("nome")
+    return render(
+        request,
+        "cadastro/listar_produtos_por_loja.html",
+        {"produtos": produtos, "loja": loja},
+    )
 
 
-def incluir_produto(request):
+def incluir_produto(request, id_loja):
+    loja = get_object_or_404(Loja, id=id_loja)
     if request.method == "POST":
         form = ProdutoForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect("cadastro:listar_produtos")
+            produto = form.save(commit=False)
+            produto.loja = loja
+            produto.save()
+            return redirect("cadastro:listar_produtos", id_loja=loja.id)
     else:
         form = ProdutoForm()
-    return render(request, "cadastro/form_produto.html", {"form": form})
+    return render(request, "cadastro/form_produto.html", {"form": form, "loja": loja})
 
 
-def detalhar_produto(request, id):
-    produto = get_object_or_404(Produto, id=id)
-    return render(request, "detalhar_produto.html", {"produto": produto})
+def detalhar_produto(request, id_loja, id_produto):
+    loja = get_object_or_404(Loja, id=id_loja)
+    produto = get_object_or_404(Produto, id=id_produto, loja=loja)
+    return render(
+        request, "cadastro/detalhar_produto.html", {"produto": produto, "loja": loja}
+    )
 
 
-def alterar_produto(request, id):
-    produto = get_object_or_404(Produto, id=id)
+def alterar_produto(request, id_loja, id_produto):
+    loja = get_object_or_404(Loja, id=id_loja)
+    produto = get_object_or_404(Produto, id=id_produto, loja=loja)
     if request.method == "POST":
         form = ProdutoForm(request.POST, instance=produto)
         if form.is_valid():
             form.save()
-            return redirect("cadastro:listar_produtos")
+            return redirect("cadastro:listar_produtos", id_loja=loja.id)
     else:
         form = ProdutoForm(instance=produto)
     return render(
-        request, "alterar_produto.html", {"formulario": form, "produto": produto}
+        request,
+        "cadastro/alterar_produto.html",
+        {"formulario": form, "produto": produto, "loja": loja},
     )
 
 
-def excluir_produto(request, id):
-    produto = get_object_or_404(Produto, id=id)
+def excluir_produto(request, id_loja, id_produto):
+    loja = get_object_or_404(Loja, id=id_loja)
+    produto = get_object_or_404(Produto, id=id_produto, loja=loja)
     if request.method == "POST":
         produto.delete()
-        return redirect("cadastro:listar_produtos")
-    return render(request, "excluir_produto.html", {"produto": produto})
+        return redirect("cadastro:listar_produtos", id_loja=loja.id)
+    return render(
+        request, "cadastro/excluir_produto.html", {"produto": produto, "loja": loja}
+    )
 
 
 # --- ADDED CODE END ---

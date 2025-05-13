@@ -115,6 +115,12 @@
             <a href="{% url 'cadastro:excluir_loja' l.id %}" class="btn-excluir"
               >Excluir</a
             >
+            <a
+              href="{% url 'cadastro:listar_produtos' l.id %}"
+              style="background-color: #6c63ff"
+              class="btn-detalhes"
+              >Ver Produtos</a
+            >
           </td>
         </tr>
         {% endfor %}

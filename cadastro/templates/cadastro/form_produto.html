@@ -1,56 +1,40 @@
-{% extends "base.html" %} {% block title %}{{ produto.id|yesno:"Editar,Novo" }}
-Produto{% endblock %} {% block content %}
-<div class="container">
-  <h1>{{ produto.id|yesno:"Editar,Novo" }} Produto</h1>
-
-  <form method="post">
-    {% csrf_token %}
-
-    <div class="mb-3">
-      <label for="{{ form.nome.id_for_label }}" class="form-label">Nome</label>
-      {{ form.nome }} {% if form.nome.errors %}
-      <div class="alert alert-danger">{{ form.nome.errors }}</div>
-      {% endif %}
+{% extends "base.html" %} {% block title %} {% if produto %} Editar Produto {{
+produto.nome }} - Shopping InfoCena {% else %} Novo Produto - Loja {{ loja.nome
+}} - Shopping InfoCena {% endif %} {% endblock %} {% block content %}
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="h3 mb-0">
+        {% if produto %} Editar Produto: {{ produto.nome }} {% else %} Novo
+        Produto - Loja: {{ loja.nome }} {% endif %}
+      </h1>
     </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %} {% for field in form %}
+        <div class="mb-3">
+          <label for="{{ field.id_for_label }}" class="form-label">
+            {{ field.label }}
+          </label>
+          {{ field.errors }} {{ field }} {% if field.help_text %}
+          <div class="form-text">{{ field.help_text }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
 
-    <div class="mb-3">
-      <label for="{{ form.descricao.id_for_label }}" class="form-label"
-        >Descrição</label
-      >
-      {{ form.descricao }} {% if form.descricao.errors %}
-      <div class="alert alert-danger">{{ form.descricao.errors }}</div>
-      {% endif %}
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Salvar
+          </button>
+          <a
+            href="{% url 'cadastro:listar_produtos' loja.id %}"
+            class="btn btn-secondary"
+          >
+            <i class="fas fa-times"></i> Cancelar
+          </a>
+        </div>
+      </form>
     </div>
-
-    <div class="mb-3">
-      <label for="{{ form.preco.id_for_label }}" class="form-label"
-        >Preço</label
-      >
-      {{ form.preco }} {% if form.preco.errors %}
-      <div class="alert alert-danger">{{ form.preco.errors }}</div>
-      {% endif %}
-    </div>
-
-    <div class="mb-3">
-      <label for="{{ form.estoque.id_for_label }}" class="form-label"
-        >Estoque</label
-      >
-      {{ form.estoque }} {% if form.estoque.errors %}
-      <div class="alert alert-danger">{{ form.estoque.errors }}</div>
-      {% endif %}
-    </div>
-
-    <div class="mb-3">
-      <label for="{{ form.loja.id_for_label }}" class="form-label">Loja</label>
-      {{ form.loja }} {% if form.loja.errors %}
-      <div class="alert alert-danger">{{ form.loja.errors }}</div>
-      {% endif %}
-    </div>
-
-    <button type="submit" class="btn btn-primary">Salvar</button>
-    <a href="{% url 'cadastro:listar_produtos' %}" class="btn btn-secondary"
-      >Cancelar</a
-    >
-  </form>
+  </div>
 </div>
 {% endblock %}

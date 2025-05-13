@@ -1,6 +1,5 @@
-{% extends "base.html" %} 
-{% block title %}Página Inicial - Shopping InfoCena{% endblock %} 
-{% block content %}
+{% extends "base.html" %} {% block title %} Página Inicial - Shopping InfoCena
+{% endblock %} {% block content %}
 <div class="text-center mt-md-5 mt-3">
   <div class="mb-5">
     <h1 class="display-4"><strong>Bem-vindo ao Shopping InfoCena</strong></h1>
@@ -9,14 +8,6 @@
   </div>
 
   <div class="row justify-content-center">
-    <div class="col-md-4 mb-4">
-      <a
-        href="{% url 'cadastro:listar_produtos' %}"
-        class="btn btn-primary btn-lg w-100 p-3 shadow-sm"
-      >
-        Gerenciar Produtos
-      </a>
-    </div>
     <div class="col-md-4 mb-4">
       <a
         href="{% url 'cadastro:listar_lojas' %}"
@@ -29,7 +20,7 @@
 
   <div class="mt-5">
     <p class="text-muted">
-      <strong>Utilize os botões acima para navegar pelas funcionalidades.</strong>
+      <strong>Utilize o botão acima para navegar pelas funcionalidades.</strong>
     </p>
   </div>
 </div>

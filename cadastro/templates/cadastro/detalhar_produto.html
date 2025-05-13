@@ -1,32 +1,47 @@
-{% extends "base.html" %} {% block title %}Detalhes do Produto{% endblock %} {%
-block content %}
-<div class="container">
-  <h1>Detalhes do Produto</h1>
-
+{% extends "base.html" %} {% block title %}Detalhes do Produto {{ produto.nome
+}} - Shopping InfoCena{% endblock %} {% block content %}
+<div class="container mt-4">
   <div class="card">
+    <div class="card-header">
+      <h1 class="h3 mb-0">Detalhes do Produto</h1>
+    </div>
     <div class="card-body">
-      <h5 class="card-title">{{ produto.nome }}</h5>
-      <p class="card-text">
-        <strong>Descrição:</strong> {{ produto.descricao|default:"Não informada"
-        }}<br />
-        <strong>Preço:</strong> R$ {{ produto.preco }}<br />
-        <strong>Estoque:</strong> {{ produto.estoque }} unidades<br />
-        <strong>Loja:</strong> {{ produto.loja.nome|default:"Não definida" }}
-      </p>
+      <div class="mb-4">
+        <h5 class="card-title">{{ produto.nome }}</h5>
+        <p class="card-text">
+          <strong>Preço:</strong> R$ {{ produto.preco|floatformat:2 }}
+        </p>
+        <p class="card-text">
+          <strong>Estoque:</strong> {{ produto.estoque }} unidades
+        </p>
+        {% if produto.descricao %}
+        <p class="card-text">
+          <strong>Descrição:</strong> {{ produto.descricao }}
+        </p>
+        {% endif %}
+        <p class="card-text"><strong>Loja:</strong> {{ produto.loja.nome }}</p>
+      </div>
 
-      <a
-        href="{% url 'cadastro:alterar_produto' produto.id %}"
-        class="btn btn-warning"
-        >Editar</a
-      >
-      <a
-        href="{% url 'cadastro:excluir_produto' produto.id %}"
-        class="btn btn-danger"
-        >Excluir</a
-      >
-      <a href="{% url 'cadastro:listar_produtos' %}" class="btn btn-secondary"
-        >Voltar</a
-      >
+      <div class="btn-group" role="group">
+        <a
+          href="{% url 'cadastro:alterar_produto' loja.id produto.id %}"
+          class="btn btn-warning"
+        >
+          <i class="fas fa-edit"></i> Editar Produto
+        </a>
+        <a
+          href="{% url 'cadastro:excluir_produto' loja.id produto.id %}"
+          class="btn btn-danger"
+        >
+          <i class="fas fa-trash"></i> Excluir Produto
+        </a>
+        <a
+          href="{% url 'cadastro:listar_produtos' loja.id %}"
+          class="btn btn-secondary"
+        >
+          <i class="fas fa-arrow-left"></i> Voltar para Lista de Produtos
+        </a>
+      </div>
     </div>
   </div>
 </div>
