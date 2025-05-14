@@ -1,0 +1,81 @@
+{% extends 'cadastro/base.html' %} {% block title %}Área Interna - Shopping
+InfoCena{% endblock %} {% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">Área Interna</h1>
+
+      <div class="row">
+        <!-- Card de Lojas -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-shop"></i> Lojas</h5>
+              <p class="card-text">Gerencie as lojas do shopping</p>
+              <a
+                href="{% url 'cadastro:listar_lojas' %}"
+                class="btn btn-primary"
+                >Acessar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card de Produtos -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-box"></i> Produtos</h5>
+              <p class="card-text">Gerencie os produtos das lojas</p>
+              <a href="#" class="btn btn-primary">Acessar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card de Relatórios -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="bi bi-graph-up"></i> Relatórios
+              </h5>
+              <p class="card-text">Visualize relatórios e estatísticas</p>
+              <a href="#" class="btn btn-primary">Acessar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    transition: transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-title {
+    color: #333;
+    font-weight: 600;
+  }
+
+  .card-text {
+    color: #666;
+  }
+
+  .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 8px 20px;
+  }
+
+  .btn-primary:hover {
+    background-color: #0b5ed7;
+  }
+</style>
+{% endblock %}

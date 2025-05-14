@@ -113,8 +113,8 @@ def excluir_produto(request, id_loja, id_produto):
         request, "cadastro/excluir_produto.html", {"produto": produto, "loja": loja}
     )
 
+def area_interna(request):
+    return render(request, "cadastro/area_interna.html")
 
-# --- ADDED CODE END ---
 
 
-# END OF FILE views.py

@@ -1,0 +1,16 @@
+{% extends 'cadastro/base.html' %}
+{% block title %} Login - Área Interna {% endblock %}
+{% block content %}
+<div class="container mt-5" style="max-width: 400px">
+  <h2 class="mb-4 text-center">Login</h2>
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+  </form>
+  {% if form.errors %}
+  <div class="alert alert-danger mt-3">
+    Usuário ou senha inválidos. Tente novamente.
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
