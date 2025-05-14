@@ -1,0 +1,101 @@
+{% extends 'siteweb/base_institucional.html' %} {% block title %}Contato - Site
+Institucional{% endblock %} {% block content %}
+<div class="container">
+  <div class="row py-5">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="text-center mb-4">Entre em Contato</h1>
+      <p class="lead text-center mb-5">
+        Estamos aqui para ajudar! Preencha o formulário abaixo ou utilize nossos
+        canais de contato.
+      </p>
+
+      <div class="row mb-5">
+        <div class="col-md-4 text-center mb-4">
+          <i class="bi bi-geo-alt-fill fs-1 text-primary"></i>
+          <h4>Endereço</h4>
+          <p>Av. Paulista, 1000<br />São Paulo - SP</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <i class="bi bi-telephone-fill fs-1 text-primary"></i>
+          <h4>Telefone</h4>
+          <p>(11) 1234-5678<br />(11) 98765-4321</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <i class="bi bi-envelope-fill fs-1 text-primary"></i>
+          <h4>Email</h4>
+          <p>contato@empresa.com<br />comercial@empresa.com</p>
+        </div>
+      </div>
+
+      <div class="card shadow">
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nome"
+                  name="nome"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="assunto" class="form-label">Assunto</label>
+              <input
+                type="text"
+                class="form-control"
+                id="assunto"
+                name="assunto"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="mensagem" class="form-label">Mensagem</label>
+              <textarea
+                class="form-control"
+                id="mensagem"
+                name="mensagem"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Enviar Mensagem
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mapa -->
+  <div class="row py-5">
+    <div class="col-12">
+      <div class="ratio ratio-21x9">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.097696365012!2d-46.65390548502147!3d-23.564611267596225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1647883149"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

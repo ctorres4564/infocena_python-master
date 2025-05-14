@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Incluir Nova Loja</h1>
+<form method="post">
+  {% csrf_token %} {{ formulario.as_p }}
+  <button type="submit" class="btn btn-success">Salvar Loja</button>
+  <a href="{% url 'cadastro:listar_lojas' %}" class="btn btn-secondary"
+    >Cancelar</a
+  >
+</form>
+{% endblock %}

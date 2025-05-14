@@ -1,0 +1,210 @@
+{% extends 'siteweb/admin/base_admin.html' %} {% block title %}Dashboard - Área
+Administrativa{% endblock %} {% block page_title %}Dashboard{% endblock %} {%
+block content %}
+<div class="container-fluid">
+  <!-- Cards de Resumo -->
+  <div class="row">
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+              >
+                Total de Produtos
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">150</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-box fs-2 text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-success text-uppercase mb-1"
+              >
+                Vendas (Mês)
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                R$ 45.000
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-currency-dollar fs-2 text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-info text-uppercase mb-1"
+              >
+                Usuários Ativos
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-people fs-2 text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-warning shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div
+                class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+              >
+                Pedidos Pendentes
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+            </div>
+            <div class="col-auto">
+              <i class="bi bi-cart fs-2 text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gráficos e Tabelas -->
+  <div class="row">
+    <!-- Gráfico de Vendas -->
+    <div class="col-xl-8 col-lg-7">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Vendas por Mês</h6>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="vendasChart" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produtos Mais Vendidos -->
+    <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">
+            Produtos Mais Vendidos
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">Produto 1</h6>
+                <small>150 vendas</small>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">Produto 2</h6>
+                <small>120 vendas</small>
+              </div>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">Produto 3</h6>
+                <small>100 vendas</small>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Últimas Atividades -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Últimas Atividades</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Usuário</th>
+                  <th>Ação</th>
+                  <th>Detalhes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2024-03-20</td>
+                  <td>João Silva</td>
+                  <td>Novo Produto</td>
+                  <td>Produto XYZ adicionado</td>
+                </tr>
+                <tr>
+                  <td>2024-03-19</td>
+                  <td>Maria Santos</td>
+                  <td>Atualização</td>
+                  <td>Preço do Produto ABC atualizado</td>
+                </tr>
+                <tr>
+                  <td>2024-03-18</td>
+                  <td>Pedro Oliveira</td>
+                  <td>Venda</td>
+                  <td>Venda #1234 realizada</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script para o gráfico -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Dados do gráfico
+  const ctx = document.getElementById("vendasChart").getContext("2d");
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+      datasets: [
+        {
+          label: "Vendas",
+          data: [30000, 35000, 40000, 38000, 42000, 45000],
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Alterar Produto: {{ produto.nome }}</h1>
+
+<form method="post">
+  {% csrf_token %} {{ formulario.as_p }} {# Renderiza o formulário
+  pré-preenchido #} {# Ou renderize campo a campo como no exemplo de
+  incluir_produto.html #}
+
+  <button type="submit" class="btn btn-success">Salvar Alterações</button>
+  <a
+    href="{% url 'cadastro:detalhar_produto' produto.loja.id produto.id %}"
+    class="btn btn-secondary"
+    >Cancelar</a
+  >
+</form>
+
+{% endblock %}

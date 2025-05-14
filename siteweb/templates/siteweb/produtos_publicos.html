@@ -1,0 +1,153 @@
+{% extends 'siteweb/base_institucional.html' %} {% block title %}Produtos - Site
+Institucional{% endblock %} {% block content %}
+<div class="container">
+  <!-- Cabeçalho -->
+  <div class="row py-5">
+    <div class="col-lg-8 mx-auto text-center">
+      <h1 class="mb-4">Nossos Produtos</h1>
+      <p class="lead">
+        Conheça nossa linha completa de produtos e soluções para o seu negócio.
+      </p>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="row mb-4">
+    <div class="col-md-6 mx-auto">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar produtos..."
+          id="searchInput"
+        />
+        <button class="btn btn-primary" type="button">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de Produtos -->
+  <div class="row">
+    <!-- Produto 1 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img
+          src="https://via.placeholder.com/300x200"
+          class="card-img-top"
+          alt="Produto 1"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Produto 1</h5>
+          <p class="card-text">
+            Descrição detalhada do produto 1, incluindo suas principais
+            características e benefícios.
+          </p>
+          <ul class="list-unstyled">
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 1
+            </li>
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 2
+            </li>
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 3
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer bg-white border-top-0">
+          <a href="#" class="btn btn-outline-primary w-100">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produto 2 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img
+          src="https://via.placeholder.com/300x200"
+          class="card-img-top"
+          alt="Produto 2"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Produto 2</h5>
+          <p class="card-text">
+            Descrição detalhada do produto 2, incluindo suas principais
+            características e benefícios.
+          </p>
+          <ul class="list-unstyled">
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 1
+            </li>
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 2
+            </li>
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 3
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer bg-white border-top-0">
+          <a href="#" class="btn btn-outline-primary w-100">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produto 3 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img
+          src="https://via.placeholder.com/300x200"
+          class="card-img-top"
+          alt="Produto 3"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Produto 3</h5>
+          <p class="card-text">
+            Descrição detalhada do produto 3, incluindo suas principais
+            características e benefícios.
+          </p>
+          <ul class="list-unstyled">
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 1
+            </li>
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 2
+            </li>
+            <li>
+              <i class="bi bi-check-circle-fill text-success"></i>
+              Característica 3
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer bg-white border-top-0">
+          <a href="#" class="btn btn-outline-primary w-100">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="row py-5">
+    <div class="col-lg-8 mx-auto text-center">
+      <h2 class="mb-4">Precisa de mais informações?</h2>
+      <p class="lead mb-4">
+        Nossa equipe está pronta para ajudar você a escolher a melhor solução
+        para o seu negócio.
+      </p>
+      <a href="{% url 'contato' %}" class="btn btn-primary btn-lg"
+        >Entre em Contato</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}

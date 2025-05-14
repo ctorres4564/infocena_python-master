@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Site Institucional{% endblock %}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">InfoCena</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'sobre' %}">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'produtos_publicos' %}"
+                >Produtos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contato' %}">Contato</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}"
+                >Área Administrativa</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container my-4">{% block content %} {% endblock %}</main>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Contato</h5>
+            <p>
+              Email: contato@empresa.com<br />
+              Telefone: (11) 1234-5678
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5>Links Úteis</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="{% url 'sobre' %}" class="text-light">Sobre Nós</a>
+              </li>
+              <li>
+                <a href="{% url 'produtos_publicos' %}" class="text-light"
+                  >Produtos</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'contato' %}" class="text-light">Contato</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Redes Sociais</h5>
+            <div class="social-links">
+              <a href="#" class="text-light me-2">Facebook</a>
+              <a href="#" class="text-light me-2">Instagram</a>
+              <a href="#" class="text-light">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
