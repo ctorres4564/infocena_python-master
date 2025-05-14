@@ -1,23 +1,13 @@
-# START OF FILE views.py
-
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-# --- MODIFIED IMPORT START ---
+
 from cadastro.forms import LojaForm, ProdutoForm
 from .models import Loja, Produto
 
-# --- MODIFIED IMPORT END ---
-
-# Create your views here.
-
 
 def index(request):
-    # You might want to update this index later
-    # return HttpResponse("Olá Mundo! Agora é web")
-    # Example: render a simple index page for the cadastro app
-    return render(request, "cadastro_index.html")  # Create this template
+    return render(request, "cadastro/cadastro_index.html")
 
 
 def listar_lojas(request):
