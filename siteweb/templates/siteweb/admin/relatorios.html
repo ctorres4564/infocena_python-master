@@ -1,0 +1,189 @@
+{% extends 'siteweb/admin/base_admin.html' %} {% block title %}Relatórios - Área
+Administrativa{% endblock %} {% block page_title %}Relatórios{% endblock %} {%
+block actions %}
+<button type="button" class="btn btn-success" onclick="exportarRelatorio()">
+  <i class="bi bi-file-excel"></i> Exportar
+</button>
+{% endblock %} {% block content %}
+<div class="container-fluid">
+  <!-- Filtros -->
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <div class="card shadow">
+        <div class="card-body">
+          <form class="row g-3">
+            <div class="col-md-3">
+              <label for="tipo_relatorio" class="form-label"
+                >Tipo de Relatório</label
+              >
+              <select class="form-select" id="tipo_relatorio">
+                <option selected>Vendas</option>
+                <option>Produtos</option>
+                <option>Usuários</option>
+                <option>Financeiro</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="data_inicio" class="form-label">Data Início</label>
+              <input type="date" class="form-control" id="data_inicio" />
+            </div>
+            <div class="col-md-3">
+              <label for="data_fim" class="form-label">Data Fim</label>
+              <input type="date" class="form-control" id="data_fim" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">&nbsp;</label>
+              <button type="submit" class="btn btn-primary w-100">
+                Gerar Relatório
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="row">
+    <!-- Gráfico de Vendas -->
+    <div class="col-xl-8 col-lg-7">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Vendas por Período</h6>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="vendasChart" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Distribuição de Vendas -->
+    <div class="col-xl-4 col-lg-5">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">
+            Distribuição de Vendas
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="chart-pie">
+            <canvas id="distribuicaoChart" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabela de Dados -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Dados do Relatório</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Produto</th>
+                  <th>Quantidade</th>
+                  <th>Valor Unitário</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2024-03-20</td>
+                  <td>Produto 1</td>
+                  <td>5</td>
+                  <td>R$ 100,00</td>
+                  <td>R$ 500,00</td>
+                </tr>
+                <tr>
+                  <td>2024-03-19</td>
+                  <td>Produto 2</td>
+                  <td>3</td>
+                  <td>R$ 150,00</td>
+                  <td>R$ 450,00</td>
+                </tr>
+                <tr>
+                  <td>2024-03-18</td>
+                  <td>Produto 3</td>
+                  <td>2</td>
+                  <td>R$ 200,00</td>
+                  <td>R$ 400,00</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                  <td><strong>R$ 1.350,00</strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts para os gráficos -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Gráfico de Vendas
+  const ctxVendas = document.getElementById("vendasChart").getContext("2d");
+  new Chart(ctxVendas, {
+    type: "line",
+    data: {
+      labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+      datasets: [
+        {
+          label: "Vendas",
+          data: [30000, 35000, 40000, 38000, 42000, 45000],
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
+
+  // Gráfico de Distribuição
+  const ctxDistribuicao = document
+    .getElementById("distribuicaoChart")
+    .getContext("2d");
+  new Chart(ctxDistribuicao, {
+    type: "pie",
+    data: {
+      labels: ["Produto 1", "Produto 2", "Produto 3"],
+      datasets: [
+        {
+          data: [500, 450, 400],
+          backgroundColor: [
+            "rgb(255, 99, 132)",
+            "rgb(54, 162, 235)",
+            "rgb(255, 205, 86)",
+          ],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
+
+  // Função para exportar relatório
+  function exportarRelatorio() {
+    alert("Relatório exportado com sucesso!");
+  }
+</script>
+{% endblock %}

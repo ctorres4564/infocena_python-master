@@ -1,0 +1,221 @@
+{% extends 'siteweb/admin/base_admin.html' %} {% block title %}Usuários - Área
+Administrativa{% endblock %} {% block page_title %}Gerenciamento de Usuários{%
+endblock %} {% block actions %}
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#novoUsuarioModal"
+>
+  <i class="bi bi-person-plus"></i> Novo Usuário
+</button>
+{% endblock %} {% block content %}
+<div class="container-fluid">
+  <!-- Filtros -->
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <div class="card shadow">
+        <div class="card-body">
+          <form class="row g-3">
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Buscar usuário..."
+              />
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>Perfil</option>
+                <option>Administrador</option>
+                <option>Editor</option>
+                <option>Usuário</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>Status</option>
+                <option>Ativo</option>
+                <option>Inativo</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary w-100">
+                Filtrar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de Usuários -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Perfil</th>
+                  <th>Último Acesso</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>João Silva</td>
+                  <td>joao@email.com</td>
+                  <td>Administrador</td>
+                  <td>2024-03-20 10:30</td>
+                  <td><span class="badge bg-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-primary" title="Editar">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-warning"
+                      title="Alterar Senha"
+                    >
+                      <i class="bi bi-key"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" title="Excluir">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Maria Santos</td>
+                  <td>maria@email.com</td>
+                  <td>Editor</td>
+                  <td>2024-03-19 15:45</td>
+                  <td><span class="badge bg-success">Ativo</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-primary" title="Editar">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-warning"
+                      title="Alterar Senha"
+                    >
+                      <i class="bi bi-key"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" title="Excluir">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Pedro Oliveira</td>
+                  <td>pedro@email.com</td>
+                  <td>Usuário</td>
+                  <td>2024-03-18 09:15</td>
+                  <td><span class="badge bg-danger">Inativo</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-primary" title="Editar">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-warning"
+                      title="Alterar Senha"
+                    >
+                      <i class="bi bi-key"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" title="Excluir">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Paginação -->
+          <nav aria-label="Navegação de páginas" class="mt-4">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Anterior</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Próximo</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Novo Usuário -->
+<div class="modal fade" id="novoUsuarioModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Novo Usuário</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome Completo</label>
+            <input type="text" class="form-control" id="nome" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="perfil" class="form-label">Perfil</label>
+            <select class="form-select" id="perfil" required>
+              <option value="">Selecione um perfil</option>
+              <option>Administrador</option>
+              <option>Editor</option>
+              <option>Usuário</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" required />
+          </div>
+          <div class="mb-3">
+            <label for="confirmar_senha" class="form-label"
+              >Confirmar Senha</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confirmar_senha"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

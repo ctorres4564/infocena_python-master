@@ -1,0 +1,176 @@
+{% extends 'siteweb/base_institucional.html' %} {% block title %}Início - Site
+Institucional{% endblock %} {% block content %}
+<style>
+  .hero-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #f8fafc 60%, #e9ecef 100%);
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
+  }
+  .diferenciais-section {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2.5rem 1rem 2rem 1rem;
+    margin-bottom: 3rem;
+  }
+  .produtos-section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem 1rem 2rem 1rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
+  }
+  .card.h-100,
+  .card {
+    min-height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+  }
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  @media (max-width: 767px) {
+    .hero-section {
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .section-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<div class="container">
+  <!-- Hero Section -->
+  <div class="row hero-section mb-5">
+    <div
+      class="col-md-6 mb-4 mb-md-0 d-flex flex-column justify-content-center align-items-start"
+    >
+      <h1 class="display-4 fw-bold mb-3">Bem-vindo à InfoCena</h1>
+      <p class="lead mb-4">Soluções inovadoras para seu negócio crescer</p>
+      <a href="{% url 'contato' %}" class="btn btn-primary btn-lg"
+        >Fale Conosco</a
+      >
+    </div>
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <img
+        src="https://via.placeholder.com/600x400"
+        alt="Imagem Principal"
+        class="img-fluid rounded shadow"
+        style="max-width: 90%; height: auto"
+      />
+    </div>
+  </div>
+
+  <!-- Diferenciais -->
+  <div class="row diferenciais-section mb-5">
+    <div class="section-title">Nossos Diferenciais</div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <i class="bi bi-graph-up-arrow fs-1 text-primary mb-3"></i>
+          <h3 class="card-title">Inovação</h3>
+          <p class="card-text">
+            Soluções modernas e tecnológicas para impulsionar seu negócio.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <i class="bi bi-people fs-1 text-primary mb-3"></i>
+          <h3 class="card-title">Equipe Qualificada</h3>
+          <p class="card-text">
+            Profissionais experientes e dedicados ao seu projeto.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <i class="bi bi-shield-check fs-1 text-primary mb-3"></i>
+          <h3 class="card-title">Qualidade</h3>
+          <p class="card-text">
+            Compromisso com a excelência em todos os serviços.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Produtos em Destaque -->
+  <div class="row produtos-section">
+    <div class="section-title">Produtos em Destaque</div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/300x200"
+          class="card-img-top"
+          alt="Produto 1"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Produto 1</h5>
+          <p class="card-text">
+            Descrição breve do produto e seus principais benefícios.
+          </p>
+          <a
+            href="{% url 'produtos_publicos' %}"
+            class="btn btn-outline-primary"
+            >Saiba mais</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/300x200"
+          class="card-img-top"
+          alt="Produto 2"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Produto 2</h5>
+          <p class="card-text">
+            Descrição breve do produto e seus principais benefícios.
+          </p>
+          <a
+            href="{% url 'produtos_publicos' %}"
+            class="btn btn-outline-primary"
+            >Saiba mais</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/300x200"
+          class="card-img-top"
+          alt="Produto 3"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Produto 3</h5>
+          <p class="card-text">
+            Descrição breve do produto e seus principais benefícios.
+          </p>
+          <a
+            href="{% url 'produtos_publicos' %}"
+            class="btn btn-outline-primary"
+            >Saiba mais</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

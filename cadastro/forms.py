@@ -1,5 +1,3 @@
-
-
 from django import forms
 
 
@@ -15,6 +13,7 @@ class LojaForm(forms.ModelForm):
                            error_messages={
                                'required': 'Campo Obrigatório'
                            })
+    imagem = forms.ImageField(label='Imagem', required=False)
     class Meta:
         model = Loja
         fields = '__all__'
@@ -33,6 +32,7 @@ class ProdutoForm(forms.ModelForm):
                                })
     estoque = forms.IntegerField(label='Estoque', required=False, initial=0)
     descricao = forms.CharField(label='Descrição', required=False, widget=forms.Textarea)
+    imagem = forms.ImageField(label='Imagem', required=False)
 
     class Meta:
         model = Produto

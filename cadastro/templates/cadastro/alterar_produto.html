@@ -1,18 +1,23 @@
-{% extends 'base.html' %} {# Ou o nome do seu template base #}
+{% extends 'base.html' %} {# Ou o nome do seu template base #} {% block content
+%}
+<h1>Alterar Produto: {{ produto.nome }}</h1>
 
-{% block content %}
-  <h1>Alterar Produto: {{ produto.nome }}</h1>
+<form method="post">
+  {% csrf_token %} {{ formulario.as_p }} {# Renderiza o formulário
+  pré-preenchido #} {# Ou renderize campo a campo como no exemplo de
+  incluir_produto.html #}
 
-  <form method="post">
-    {% csrf_token %}
-    {{ formulario.as_p }} {# Renderiza o formulário pré-preenchido #}
-    {# Ou renderize campo a campo como no exemplo de incluir_produto.html #}
-
-    <button type="submit" class="btn btn-success">Salvar Alterações</button>
-    <a href="{% url 'cadastro:listar_produtos' %}" class="btn btn-secondary">Cancelar</a>
-    {# Ou link de volta para detalhes:
-    <a href="{% url 'cadastro:detalhar_produto' produto.id %}" class="btn btn-secondary">Cancelar</a>
-    #}
-  </form>
+  <button type="submit" class="btn btn-success">Salvar Alterações</button>
+  <a href="{% url 'cadastro:listar_produtos' %}" class="btn btn-secondary"
+    >Cancelar</a
+  >
+  {# Ou link de volta para detalhes:
+  <a
+    href="{% url 'cadastro:detalhar_produto' produto.id %}"
+    class="btn btn-secondary"
+    >Cancelar</a
+  >
+  #}
+</form>
 
 {% endblock %}

@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Ambiente virtual
+venv/
+env/
+ENV/
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Arquivos do sistema Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Arquivos de cache
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Arquivos de migração (opcional, descomente se necessário)
+# */migrations/*.py
+# !*/migrations/__init__.py 
