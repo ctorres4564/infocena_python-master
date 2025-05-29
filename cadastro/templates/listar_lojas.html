@@ -1,0 +1,33 @@
+{% extends 'interna.html' %}
+
+{% block content %}
+    <h1>Lojas</h1>
+    
+    <a href="{% url 'incluir_loja' %}">Incluir</a>
+    <table>
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Telefone</td>
+                <td>Ações</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for l in lojas %}
+            <tr>
+                <td>{{ l.nome }}</td>
+                <td>{{ l.telefone }}</td>
+                <td><a href="{% url 'alterar_loja' l.id %}">
+                        Alterar
+                    </a> 
+                    <!---->
+                    <a href="{% url 'excluir_loja' l.id %}"
+                       onclick="return excluir()">                    
+                        Excluir
+                    </a>
+                </td>
+            </tr>    
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

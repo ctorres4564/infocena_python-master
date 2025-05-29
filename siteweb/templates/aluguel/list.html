@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>Solicitações de Aluguel</h2>
+  <a href="{% url 'aluguel_create' %}" class="btn btn-primary mb-3"
+    >Nova Solicitação</a
+  >
+
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %} {% endif %}
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone Fixo</th>
+          <th>Telefone Celular</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for aluguel in alugueis %}
+        <tr>
+          <td>{{ aluguel.nome }}</td>
+          <td>{{ aluguel.email }}</td>
+          <td>{{ aluguel.telefoneFixo }}</td>
+          <td>{{ aluguel.telefoneCelular }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="text-center">
+            Nenhuma solicitação de aluguel registrada.
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

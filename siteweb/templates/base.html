@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Sistema de Cadastro{% endblock %}</title>
+  </head>
+  <body>
+    <div>
+      <a href="{% url 'index' %}">Home</a> |
+      <a href="{% url 'fale_conosco_create' %}">Fale Conosco</a> |
+      <a href="{% url 'aluguel_create' %}">Aluguel</a> |
+      <a href="{% url 'cliente_create' %}">Cadastro</a> |
+      <a href="{% url 'area_interna' %}">Área Interna</a>
+    </div>
+    <div>{% block content %}{% endblock %}</div>
+  </body>
+</html>

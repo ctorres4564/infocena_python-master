@@ -1,0 +1,39 @@
+{% extends 'interna.html' %}
+
+{% block content %}
+    <!--
+        Esta é 
+        a 
+        página 
+        de 
+        cadastro
+    -->
+    {% if mensagem %}
+        <script>
+            var msg = '{{ mensagem }}';
+            alert(msg);
+        </script>
+    {% endif %}
+    <form method="post">
+        {{ formulario }}
+        {% csrf_token %}
+        <input type="submit" value="Gravar" />
+        <input type="reset" value="Limpar" />
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+      
+            var mailMudar = document.getElementById('id_nome');
+            var pass = document.getElementById('id_telefone');
+      
+           mailMudar.onfocus = pass.onfocus = mailMudar.oninput = pass.oninput = function(){
+               if(this.id == "id_nome"){
+                  mailMudar.setCustomValidity(!mailMudar.value ? 'Preencha o e-mail' : '');
+               }else if(this.id == "id_telefone"){
+                  pass.setCustomValidity(!pass.value ? 'Preencha a senha' : '');
+               }
+           }
+        });
+        </script>
+{% endblock %}

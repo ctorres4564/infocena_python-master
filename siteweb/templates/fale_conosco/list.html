@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>Mensagens Recebidas</h2>
+  <a href="{% url 'fale_conosco_create' %}" class="btn btn-primary mb-3"
+    >Nova Mensagem</a
+  >
+
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %} {% endif %}
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Motivo</th>
+          <th>Telefone</th>
+          <th>Assunto</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contato in contatos %}
+        <tr>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.email }}</td>
+          <td>{{ contato.motivoContato }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>{{ contato.assunto }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center">Nenhuma mensagem recebida.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

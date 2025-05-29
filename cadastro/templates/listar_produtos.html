@@ -1,0 +1,33 @@
+{% extends 'interna.html' %}
+
+{% block content %}
+    <h1>Produtos</h1>
+    <a href="{% url 'incluir_produto' %}">Incluir</a>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Preço</td>
+                <td>Ações</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in produtos %}
+            <tr>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.preco }}</td>
+                <td>
+                    <a href="{% url 'alterar_produto' p.id %}">
+                        Alterar
+                    </a>
+                    <a href="{% url 'excluir_produto' p.id %}"
+                        onclick="return excluir()">
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

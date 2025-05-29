@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>Excluir Cliente</h2>
+
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %} {% endif %}
+
+  <div class="alert alert-danger mt-4">
+    <h4 class="alert-heading">Atenção!</h4>
+    <p>
+      Tem certeza que deseja excluir o cliente
+      <strong>{{ cliente.nome }}</strong>?
+    </p>
+    <p>Esta ação não pode ser desfeita.</p>
+  </div>
+
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a href="{% url 'cliente_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>Clientes</h2>
+  <a href="{% url 'cliente_create' %}" class="btn btn-primary mb-3"
+    >Novo Cliente</a
+  >
+
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %} {% endif %}
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cliente in clientes %}
+        <tr>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.cpf }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>{{ cliente.telefone }}</td>
+          <td>
+            <a
+              href="{% url 'cliente_edit' cliente.id %}"
+              class="btn btn-sm btn-warning"
+              >Editar</a
+            >
+            <a
+              href="{% url 'cliente_delete' cliente.id %}"
+              class="btn btn-sm btn-danger"
+              >Excluir</a
+            >
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center">Nenhum cliente cadastrado.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
